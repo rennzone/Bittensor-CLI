@@ -106,6 +106,7 @@ if [[ $install_subtensor_choice == "y" || $install_subtensor_choice == "Y" ]]; t
     sudo apt install -y build-essential clang curl git make libssl-dev llvm libudev-dev protobuf-compiler
 
     ### Install Rust
+    cd ~
     curl --proto '=https' --tlsv1.2 -sSf https://sh.rustup.rs | sh
     source ~/.cargo/env
 
