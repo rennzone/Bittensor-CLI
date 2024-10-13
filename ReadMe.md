@@ -20,4 +20,5 @@ Download dan jalankan script bittensor-cli.sh
 ```
 
 
+Saran, setiap file subnet ditempatkan didalam directory btcli.
 Happy mining 😉
