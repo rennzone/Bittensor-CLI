@@ -27,6 +27,11 @@ clear
 
 sudo apt update && sudo apt upgrade -y
 
+### Install NodeJS dan NPM
+sudo apt install nodejs npm -y
+sudo npm install -g pm2
+pm2 startup
+
 ### Install Bittensor SDK
 /bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/opentensor/bittensor/master/scripts/install.sh)"
 
