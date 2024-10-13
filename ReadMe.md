@@ -1,5 +1,5 @@
 
-# Auto Install Bittensor SDK CLI Local Subtensor Node
+# Auto Install Bittensor SDK, CLI & Local Subtensor Node
 
 Tujuan utama script ini adalah menginstall Bittensor SDK, CLI dan Local Subtensor sehingga tidak perlu menginstall manual satu persatu.
 
