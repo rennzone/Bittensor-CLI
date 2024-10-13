@@ -4,10 +4,11 @@
 Tujuan utama script ini adalah menginstall Bittensor SDK, CLI dan Local Subtensor sehingga tidak perlu menginstall manual satu persatu.
 
 Apa saja yang dijalankan?
-1. Install Bittensor SDK
-2. Install BTCLI
-3. Setup Wallet (create / regen)
-4. Install Local Subtensor (optional)
+1. Install NodeJS dan NPM
+2. Install Bittensor SDK
+3. Install BTCLI
+4. Setup Wallet (create / regen)
+5. Install Local Subtensor (optional)
 
 
 
