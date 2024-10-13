@@ -101,47 +101,49 @@ if [[ $install_subtensor_choice == "y" || $install_subtensor_choice == "Y" ]]; t
 
     ############ Install Local Subtensor ############
 
-    ### Install basic packages
+    # Instalasi dasar
     sudo apt-get update 
     sudo apt install -y build-essential clang curl git make libssl-dev llvm libudev-dev protobuf-compiler
 
-    ### Install Rust
+    # Instalasi Rust
     cd ~
     curl --proto '=https' --tlsv1.2 -sSf https://sh.rustup.rs | sh
     source ~/.cargo/env
 
-    # install Rust toolchain
+    # Instalasi toolchain Rust
     rustup default stable
     rustup update
     rustup target add wasm32-unknown-unknown
     rustup toolchain install nightly
     rustup target add --toolchain nightly wasm32-unknown-unknown
 
-    ### Compile subtensor code
+    # Kompilasi subtensor code
     git clone https://github.com/opentensor/subtensor.git
     cd subtensor
     git checkout main
     rm -rf /tmp/blockchain 
     cargo build -p node-subtensor --profile=production --features=runtime-benchmarks
 
-    ### Run Subtensor Node
-while true; do
-    echo "Pilih opsi untuk menjalankan Subtensor Node:"
-    echo "1. Lite Node on Mainchain"
-    echo "2. Lite Node on Testchain"
-    read -p "Masukkan pilihan (1 atau 2): " node_choice
+    ### Jalankan Subtensor Node
+    while true; do
+        echo "Pilih opsi untuk menjalankan Subtensor Node:"
+        echo "1. Lite Node on Mainchain"
+        echo "2. Lite Node on Testchain"
+        read -p "Masukkan pilihan (1 atau 2): " node_choice
 
-    if [[ $node_choice == "1" ]]; then
-        ./target/production/node-subtensor --chain raw_spec_finney.json --base-path /tmp/blockchain --sync=warp --port 30333 --max-runtime-instances 32 --rpc-max-response-size 2048 --rpc-cors all --rpc-port 9944 --bootnodes /dns/bootnode.finney.chain.opentensor.ai/tcp/30333/ws/p2p/12D3KooWRwbMb85RWnT8DSXSYMWQtuDwh4LJzndoRrTDotTR5gDC --no-mdns --in-peers 8000 --out-peers 8000 --prometheus-external --rpc-external
-        break
-    elif [[ $node_choice == "2" ]]; then
-        ./target/production/node-subtensor --chain raw_spec_testfinney.json --base-path /tmp/blockchain --sync=warp --port 30333 --max-runtime-instances 32 --rpc-max-response-size 2048 --rpc-cors all --rpc-port 9944 --bootnodes /dns/bootnode.test.finney.opentensor.ai/tcp/30333/p2p/12D3KooWPM4mLcKJGtyVtkggqdG84zWrd7Rij6PGQDoijh1X86Vr --no-mdns --in-peers 8000 --out-peers 8000 --prometheus-external --rpc-external
-        break
-    else
-        echo "Pilihan tidak valid. Silakan coba lagi."
-    fi
-    
+        if [[ $node_choice == "1" ]]; then
+            ./target/production/node-subtensor --chain raw_spec_finney.json --base-path /tmp/blockchain --sync=warp --port 30333 --max-runtime-instances 32 --rpc-max-response-size 2048 --rpc-cors all --rpc-port 9944 --bootnodes /dns/bootnode.finney.chain.opentensor.ai/tcp/30333/ws/p2p/12D3KooWRwbMb85RWnT8DSXSYMWQtuDwh4LJzndoRrTDotTR5gDC --no-mdns --in-peers 8000 --out-peers 8000 --prometheus-external --rpc-external
+            break
+        elif [[ $node_choice == "2" ]]; then
+            ./target/production/node-subtensor --chain raw_spec_testfinney.json --base-path /tmp/blockchain --sync=warp --port 30333 --max-runtime-instances 32 --rpc-max-response-size 2048 --rpc-cors all --rpc-port 9944 --bootnodes /dns/bootnode.test.finney.opentensor.ai/tcp/30333/p2p/12D3KooWPM4mLcKJGtyVtkggqdG84zWrd7Rij6PGQDoijh1X86Vr --no-mdns --in-peers 8000 --out-peers 8000 --prometheus-external --rpc-external
+            break
+        else
+            echo "Pilihan tidak valid. Silakan coba lagi."
+        fi
+    done
+
     echo "Instalasi Local Subtensor sudah selesai."
+
 else
     echo "Instalasi Local Subtensor dibatalkan."
 fi
