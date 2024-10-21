@@ -17,7 +17,7 @@ Apa saja yang dijalankan?
 Download dan jalankan script bittensor-cli.sh
 
 ```bash
-  wget https://raw.githubusercontent.com/rennzone/Auto-Install-Bittensor-Script/refs/heads/main/bittensor-cli.sh && bash bittensor-cli.sh
+wget https://raw.githubusercontent.com/rennzone/Auto-Install-Bittensor-Script/refs/heads/main/bittensor-cli.sh && bash bittensor-cli.sh
 ```
 
 
